@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishwa Mistry - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            font-size: 0.95em;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .skill-category strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .project {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+        }
+        
+        .project h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+        
+        .project-tech {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+        
+        .project p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .project ul {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+        
+        .project ul li {
+            margin-bottom: 4px;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .project-links a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .project-links a:hover {
+            color: #764ba2;
+        }
+        
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .cert-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+        }
+        
+        .cert-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cert-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s;
+            z-index: 0;
+        }
+        
+        .cert-link:hover::before {
+            left: 100%;
+        }
+        
+        .cert-link:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        
+        .cert-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cert-card p {
+            font-size: 0.95em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cert-emoji {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cert-hint {
+            font-size: 0.8em;
+            margin-top: 15px;
+            opacity: 0.7;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cert-hint-text {
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        
+        .education {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .education h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .education p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .cert-info-text {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-container .download-btn {
+            margin: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>VISHWA MISTRY</h1>
+            <p>Full-Stack Developer | Python Developer</p>
+            <div class="contact-info">
+                <a href="mailto:mistryvishwa16@gmail.com">📧 Email</a>
+                <a href="https://linkedin.com/in/vishwa-mistry-932a49368" target="_blank">💼 LinkedIn</a>
+                <a href="https://github.com/vishwa024" target="_blank">🐙 GitHub</a>
+                <span>📍 Ahmedabad, Gujarat | 📱 +91 93275 91623</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- Professional Summary -->
+            <div class="section">
+                <h2>Professional Summary</h2>
+                <p>Motivated M.Sc. Information Technology student with a strong foundation in Python, JavaScript, PHP, SQL, MERN Stack, and Machine Learning. Hands-on experience in software development, database management, and problem-solving through academic and real-world projects. Eager to contribute technical skills to Software Development, Python Development, Data Science, AI/ML, and other entry-level IT roles.</p>
+            </div>
+            
+            <!-- Technical Skills -->
+            <div class="section">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <strong>Programming Languages</strong>
+                        Python, JavaScript, PHP, HTML5, CSS3, SQL
+                    </div>
+                    <div class="skill-category">
+                        <strong>Frameworks & Web Tech</strong>
+                        Streamlit, React.js, Express.js, RESTful APIs, JSON
+                    </div>
+                    <div class="skill-category">
+                        <strong>Databases</strong>
+                        MySQL, MongoDB
+                    </div>
+                    <div class="skill-category">
+                        <strong>Testing & Concepts</strong>
+                        Manual Testing, Web App Testing, API Testing (Postman), DSA, OOP, DBMS
+                    </div>
+                    <div class="skill-category">
+                        <strong>Developer & Testing Tools</strong>
+                        Postman, Git, GitHub, VS Code, Jupyter Notebook
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projects -->
+            <div class="section">
+                <h2>Projects</h2>
+                
+                <!-- Project 1: Loan Approval Prediction System -->
+                <div class="project">
+                    <h3>Loan Approval Prediction System</h3>
+                    <div class="project-tech">Python, Streamlit, Pandas, Scikit-learn</div>
+                    <ul>
+                        <li>Developed an interactive web application using Streamlit and Python to evaluate applicant loan eligibility in real time.</li>
+                        <li>Implemented automated data preprocessing, missing value handling, feature engineering, and classification algorithms.</li>
+                        <li>Designed an intuitive UI allowing users to input parameters, execute data validation checks, and verify predictive output.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/vishwa024/Loan_approval_system" target="_blank">💻 GitHub Repository</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2: Smart Cafe Management System -->
+                <div class="project">
+                    <h3>Smart Cafe Management System</h3>
+                    <div class="project-tech">React.js, Express.js, MongoDB, REST APIs</div>
+                    <ul>
+                        <li>Architected a full-stack web application for order management, billing automation, and menu administration.</li>
+                        <li>Built and performed API testing on REST endpoints using Postman to ensure reliable CRUD operations with MongoDB.</li>
+                        <li>Developed a responsive frontend interface using React.js with modular components and client-side form validation.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://cafe-management-system-32m1.vercel.app" target="_blank">🔗 Live Demo</a>
+                        <a href="https://github.com/vishwa024" target="_blank">💻 Source Code</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3: Product Review & Rating Platform -->
+                <div class="project">
+                    <h3>Product Review & Rating Platform</h3>
+                    <div class="project-tech">React.js, Express.js, MongoDB</div>
+                    <ul>
+                        <li>Engineered complete CRUD operations, user authentication, and role-based access control for customer review management.</li>
+                        <li>Conducted functional and regression testing across backend APIs to verify accurate data flow and exception handling.</li>
+                    </ul>
+                </div>
+                
+                <!-- Project 4: Salon Booking Appointment System -->
+                <div class="project">
+                    <h3>Salon Booking Appointment System</h3>
+                    <div class="project-tech">PHP, MySQL, HTML5, CSS3</div>
+                    <ul>
+                        <li>Developed an end-to-end appointment scheduling web portal with dynamic slot availability validation and confirmation records.</li>
+                        <li>Designed a normalized relational MySQL database schema and implemented server-side input sanitization for data security.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Education -->
+            <div class="section">
+                <h2>Education</h2>
+                
+                <div class="education">
+                    <h3>Integrated M.Sc. in Information Technology</h3>
+                    <p><strong>K.S. School of Business Management & IT, Gujarat University</strong></p>
+                    <p>2023-2028 (Expected) | Currently in 4th Year | CGPA: 71%</p>
+                </div>
+                
+                <div class="education">
+                    <h3>Higher Secondary Certificate (HSC)</h3>
+                    <p><strong>Gujarat Board (GSEB)</strong></p>
+                    <p>2023 | Percentage: 89%</p>
+                </div>
+                
+                <div class="education">
+                    <h3>Secondary School Certificate (SSC)</h3>
+                    <p><strong>Gujarat Board (GSEB)</strong></p>
+                    <p>2021 | Percentage: 84%</p>
+                </div>
+            </div>
+            
+            <!-- Certifications -->
+            <div class="section">
+                <h2>Certifications & Achievements</h2>
+                <p class="cert-info-text">📌 Click on any certification card to view the full credential</p>
+                
+                <div class="cert-grid">
+                    <!-- 1. Infosys Python Certificate -->
+                    <a href="https://drive.google.com/file/d/1CseivDaxrtRPr3l-_A9rKvgDjVejhBMc/view?usp=drive_link" target="_blank" class="cert-card cert-link">
+                        <div>
+                            <div class="cert-emoji">📜</div>
+                            <h4>Programming Fundamentals Using Python</h4>
+                            <p>Infosys Springboard</p>
+                            <p style="font-size: 0.85em; opacity: 0.8;">June 2025</p>
+                        </div>
+                        <div class="cert-hint">
+                            <span class="cert-hint-text">👆 Click to View</span>
+                        </div>
+                    </a>
+                    
+                    <!-- 2. Agile Project Management -->
+                    <a href="https://drive.google.com/file/d/1-Ld3f051kt1iIbIvWULZhubqJv9VuFaP/view?usp=drive_link" target="_blank" class="cert-card cert-link">
+                        <div>
+                            <div class="cert-emoji">🎯</div>
+                            <h4>Agile Project Management</h4>
+                            <p>HP Foundation LIFE</p>
+                            <p style="font-size: 0.85em; opacity: 0.8;">May 2025</p>
+                        </div>
+                        <div class="cert-hint">
+                            <span class="cert-hint-text">👆 Click to View</span>
+                        </div>
+                    </a>
+                    
+                    <!-- 3. IBM Python Certificate -->
+                    <a href="https://drive.google.com/file/d/1ZhudSClRMD1uK-afZvwxQIgXM9F8ptbY/view?usp=drive_link" target="_blank" class="cert-card cert-link">
+                        <div>
+                            <div class="cert-emoji">🐍</div>
+                            <h4>Python for Data Science, AI & Development</h4>
+                            <p>IBM (Coursera)</p>
+                            <p style="font-size: 0.85em; opacity: 0.8;">July 2025</p>
+                        </div>
+                        <div class="cert-hint">
+                            <span class="cert-hint-text">👆 Click to View</span>
+                        </div>
+                    </a>
+                    
+                    <!-- 4. AI for Beginners -->
+                    <a href="https://drive.google.com/file/d/1Cc5lhuXMT0C4Te9oyVW19XS0BN4P8aNs/view?usp=drive_link" target="_blank" class="cert-card cert-link">
+                        <div>
+                            <div class="cert-emoji">🤖</div>
+                            <h4>AI for Beginners</h4>
+                            <p>HP Foundation LIFE</p>
+                            <p style="font-size: 0.85em; opacity: 0.8;">May 2025</p>
+                        </div>
+                        <div class="cert-hint">
+                            <span class="cert-hint-text">👆 Click to View</span>
+                        </div>
+                    </a>
+                    
+                    <!-- 5. Walmart Job Simulation -->
+                    <a href="https://drive.google.com/file/d/1pGjiDVBS_CLfXx2UXF_MgujgqoosO946/view?usp=drive_link" target="_blank" class="cert-card cert-link">
+                        <div>
+                            <div class="cert-emoji">💼</div>
+                            <h4>Advanced Software Engineering</h4>
+                            <p>Walmart Global Tech (Forage)</p>
+                            <p style="font-size: 0.85em; opacity: 0.8;">May 2026</p>
+                        </div>
+                        <div class="cert-hint">
+                            <span class="cert-hint-text">👆 Click to View</span>
+                        </div>
+                    </a>
+                    
+                    <!-- 6. TATA GenAI Certificate -->
+                    <a href="https://drive.google.com/file/d/1k7VPUPN9P0oyPakyRaXQ74nLLYUsRqsY/view?usp=drive_link" target="_blank" class="cert-card cert-link">
+                        <div>
+                            <div class="cert-emoji">📊</div>
+                            <h4>GenAI Powered Data Analytics</h4>
+                            <p>TATA (Forage)</p>
+                            <p style="font-size: 0.85em; opacity: 0.8;">May 2026</p>
+                        </div>
+                        <div class="cert-hint">
+                            <span class="cert-hint-text">👆 Click to View</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- View All Certificates Button -->
+                <div class="btn-container">
+                    <a href="https://drive.google.com/drive/folders/12iypddxou0WeuuKq2UjOImw3C2UfiPlA?usp=drive_link" target="_blank" class="download-btn">
+                        📂 View All Certificates
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Download Resume Buttons -->
+            <div class="btn-container">
+                <a href="Vishwa_Mistry_Resume.pdf" class="download-btn">⬇️ Download Resume (PDF)</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Vishwa Mistry | All information is true, complete, and accurate to the best of my knowledge and belief.</p>
+            <p>📱 +91 93275 91623 | 📧 mistryvishwa16@gmail.com</p>
+        </div>
+    </div>
+</body>
+</html>

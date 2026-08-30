@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vishwa Mistry · Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet" />
+    <style>
+        /* ─── RESET ─── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f0f2f5;
+            color: #111827;
+            padding: 32px 16px;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ─── CONTAINER ─── */
+        .container {
+            max-width: 960px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        /* ─── HEADER ─── */
+        .header {
+            background: #0b1120;
+            color: #fff;
+            padding: 40px 44px 32px;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-left h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .header-left .tagline {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .qr-box {
+            background: #fff;
+            padding: 6px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            line-height: 0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .qr-box img {
+            width: 76px;
+            height: 76px;
+            border-radius: 6px;
+            display: block;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        .contact-row a {
+            color: #e2e8f0;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .contact-row a:hover {
+            color: #60a5fa;
+        }
+
+        .contact-row .sep {
+            color: #334155;
+        }
+
+        /* ─── CONTENT ─── */
+        .content {
+            padding: 40px 44px 36px;
+        }
+
+        /* ─── SECTION ─── */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0b1120;
+            letter-spacing: -0.02em;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eef2f6;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title .line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #2563eb, transparent);
+            border-radius: 4px;
+        }
+
+        .section-title .count {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            background: #eef2f6;
+            color: #475569;
+            padding: 2px 14px;
+            border-radius: 30px;
+        }
+
+        /* ─── SUMMARY ─── */
+        .summary {
+            color: #374151;
+            font-size: 0.98rem;
+            max-width: 90%;
+        }
+
+        /* ─── SKILLS ─── */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .skill {
+            background: #f8fafc;
+            border: 1px solid #eef2f6;
+            border-radius: 10px;
+            padding: 12px 16px;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .skill:hover {
+            border-color: #2563eb;
+            background: #f1f5f9;
+        }
+
+        .skill .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #2563eb;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .skill .value {
+            font-size: 0.92rem;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        /* ─── PROJECTS ─── */
+        .project {
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .project:hover {
+            border-color: #2563eb;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.05);
+        }
+
+        .project:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 6px 14px;
+            margin-bottom: 4px;
+        }
+
+        .project-top h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #0b1120;
+        }
+
+        .project-top .stack {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #2563eb;
+            background: #eef2ff;
+            padding: 2px 14px;
+            border-radius: 30px;
+            letter-spacing: 0.2px;
+        }
+
+        .project p {
+            color: #4b5563;
+            font-size: 0.93rem;
+            margin: 6px 0 12px;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .project-links a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2563eb;
+            transition: color 0.2s;
+        }
+
+        .project-links a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        /* ─── EDUCATION ─── */
+        .edu {
+            padding: 14px 20px;
+            border-left: 4px solid #2563eb;
+            background: #fafcff;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 10px;
+            border: 1px solid #eef2f6;
+            border-left-width: 4px;
+        }
+
+        .edu:last-child {
+            margin-bottom: 0;
+        }
+
+        .edu h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0b1120;
+        }
+
+        .edu .meta {
+            color: #4b5563;
+            font-size: 0.9rem;
+        }
+
+        .edu .meta strong {
+            color: #1e293b;
+        }
+
+        /* ─── CERTIFICATIONS ─── */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 14px;
+        }
+
+        .cert {
+            background: #fafcff;
+            border: 1px solid #eef2f6;
+            border-radius: 12px;
+            padding: 16px 14px 12px;
+            text-align: center;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .cert:hover {
+            border-color: #2563eb;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.06);
+        }
+
+        .cert .icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .cert h4 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #0b1120;
+            margin-bottom: 2px;
+        }
+
+        .cert .org {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: #2563eb;
+        }
+
+        .cert .date {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+
+        .cert .hint {
+            font-size: 0.68rem;
+            color: #94a3b8;
+            margin-top: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ─── BUTTONS ─── */
+        .btn-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0b1120;
+            color: #fff;
+            padding: 11px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #1a2538;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(11, 17, 32, 0.12);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #0b1120;
+            border: 1.5px solid #0b1120;
+        }
+
+        .btn-outline:hover {
+            background: #0b1120;
+            color: #fff;
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: #f8fafc;
+            padding: 18px 44px;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.8rem;
+            border-top: 1px solid #eef2f6;
+        }
+
+        .footer p {
+            margin-bottom: 2px;
+        }
+        .footer p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            body {
+                padding: 16px 10px;
+            }
+
+            .header {
+                padding: 28px 22px 24px;
+            }
+
+            .header-left h1 {
+                font-size: 2rem;
+            }
+
+            .header-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .qr-box {
+                align-self: flex-start;
+            }
+
+            .qr-box img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .contact-row {
+                font-size: 0.8rem;
+                gap: 8px 16px;
+            }
+            .contact-row .sep {
+                display: none;
+            }
+
+            .content {
+                padding: 24px 18px 20px;
+            }
+
+            .summary {
+                max-width: 100%;
+            }
+
+            .skills {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .project-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer {
+                padding: 14px 18px;
+                font-size: 0.72rem;
+            }
+
+            .btn {
+                padding: 10px 22px;
+                font-size: 0.85rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .btn-wrap {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-left h1 {
+                font-size: 1.6rem;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project {
+                padding: 14px 16px;
+            }
+
+            .edu {
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ═══ HEADER ═══ -->
+        <header class="header">
+            <div class="header-row">
+                <div class="header-left">
+                    <h1>Vishwa Mistry</h1>
+                    <div class="tagline">Full-Stack Developer · Python · QA</div>
+                </div>
+                <div class="qr-box">
+                    <!-- Replace with your QR code image -->
+                    <img src="qr-code.png" alt="QR Code" />
+                </div>
+            </div>
+
+            <div class="contact-row">
+                <a href="mailto:mistryvishwa16@gmail.com">✉ mistryvishwa16@gmail.com</a>
+                <span class="sep">|</span>
+                <a href="https://linkedin.com/in/vishwa-mistry-932a49368" target="_blank">🔗 LinkedIn</a>
+                <span class="sep">|</span>
+                <a href="https://github.com/vishwa024" target="_blank">🐙 GitHub</a>
+                <span class="sep">|</span>
+                <span>📍 Ahmedabad, Gujarat</span>
+                <span class="sep">|</span>
+                <span>📱 +91 93275 91623</span>
+            </div>
+        </header>
+
+        <!-- ═══ CONTENT ═══ -->
+        <div class="content">
+
+            <!-- ─── SUMMARY ─── -->
+            <section class="section">
+                <div class="section-title">
+                    <span>Professional Summary</span>
+                    <span class="line"></span>
+                </div>
+                <p class="summary">
+                    Motivated M.Sc. Information Technology student with a strong foundation in Python, JavaScript, PHP, SQL, MERN Stack, and Machine Learning. Possesses hands-on experience developing academic and college projects involving software development, database management, data handling, and problem-solving. Skilled in applying programming and technical concepts to build practical solutions and solve real-world problems. Adaptable and eager to contribute technical skills to Software Development, Python Development, Data Science, AI/ML, and other entry-level IT roles while continuously expanding practical industry knowledge.
+                </p>
+            </section>
+
+            <!-- ─── SKILLS ─── -->
+            <section class="section">
+                <div class="section-title">
+                    <span>Technical Skills</span>
+                    <span class="line"></span>
+                </div>
+                <div class="skills">
+                    <div class="skill">
+                        <span class="label">Languages</span>
+                        <span class="value">Python, JavaScript, PHP, SQL</span>
+                    </div>
+                    <div class="skill">
+                        <span class="label">Web Technologies</span>
+                        <span class="value">React.js, Node.js, Express.js, HTML, CSS, Streamlit</span>
+                    </div>
+                    <div class="skill">
+                        <span class="label">Databases</span>
+                        <span class="value">MySQL, MongoDB</span>
+                    </div>
+                    <div class="skill">
+                        <span class="label">Testing &amp; Concepts</span>
+                        <span class="value">Manual Testing, API Testing (Postman), SDLC</span>
+                    </div>
+                    <div class="skill">
+                        <span class="label">Tools</span>
+                        <span class="value">Git, GitHub, VS Code, Postman, Jupyter</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── PROJECTS ─── -->
+            <section class="section">
+                <div class="section-title">
+                    <span>Projects</span>
+                    <span class="line"></span>
+                </div>
+
+                <div class="project">
+                    <div class="project-top">
+                        <h3>Smart Cafe Management System</h3>
+                        <span class="stack">MERN Stack</span>
+                    </div>
+                    <p>Full‑stack restaurant platform with REST APIs for order processing, billing, and menu management. Scalable MongoDB integration and responsive UI.</p>
+                    <div class="project-links">
+                        <a href="https://cafe-management-system-32m1.vercel.app" target="_blank">🔗 Live Demo</a>
+                        <a href="https://github.com/vishwa024" target="_blank">📂 Source Code</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-top">
+                        <h3>Loan Approval Prediction System</h3>
+                        <span class="stack">Python · Scikit-learn</span>
+                    </div>
+                    <p>Machine learning model to predict loan approval outcomes with data preprocessing, feature engineering, and model training for reliable accuracy.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/vishwa024/Loan-approval-system" target="_blank">📂 GitHub Repository</a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="project-top">
+                        <h3>Product Review &amp; Rating Platform</h3>
+                        <span class="stack">React.js · Node.js · MongoDB</span>
+                    </div>
+                    <p>Secure authentication, authorization, and full CRUD functionality with reusable React components and optimised backend services.</p>
+                </div>
+
+                <div class="project">
+                    <div class="project-top">
+                        <h3>Salon Booking Appointment System</h3>
+                        <span class="stack">PHP · MySQL</span>
+                    </div>
+                    <p>Appointment scheduling and booking management with robust input validation and relational database integration.</p>
+                </div>
+            </section>
+
+            <!-- ─── EDUCATION ─── -->
+            <section class="section">
+                <div class="section-title">
+                    <span>Education</span>
+                    <span class="line"></span>
+                </div>
+
+                <div class="edu">
+                    <h4>Integrated M.Sc. in Information Technology</h4>
+                    <div class="meta"><strong>K.S. School of Business Management, Gujarat University</strong></div>
+                    <div class="meta">2023 – 2028 · 4th Year · CGPA: 71%</div>
+                </div>
+
+                <div class="edu">
+                    <h4>Higher Secondary Certificate (HSC)</h4>
+                    <div class="meta"><strong>Gujarat Board (GSEB)</strong></div>
+                    <div class="meta">2023 · Percentage: 89%</div>
+                </div>
+
+                <div class="edu">
+                    <h4>Secondary School Certificate (SSC)</h4>
+                    <div class="meta"><strong>Gujarat Board (GSEB)</strong></div>
+                    <div class="meta">2021 · Percentage: 84%</div>
+                </div>
+            </section>
+
+            <!-- ─── CERTIFICATIONS ─── -->
+            <section class="section">
+                <div class="section-title">
+                    <span>Certifications</span>
+                    <span class="count">6</span>
+                    <span class="line"></span>
+                </div>
+
+                <div class="cert-grid">
+
+                    <a href="https://drive.google.com/file/d/1CseivDaxrtRPr3l-_A9rKvgDjVejhBMc/view?usp=drive_link" target="_blank" class="cert">
+                        <span class="icon">📜</span>
+                        <h4>Programming Fundamentals Using Python</h4>
+                        <div class="org">Infosys Springboard</div>
+                        <div class="date">June 2025</div>
+                        <div class="hint">👆 Click to view</div>
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1-Ld3f051kt1iIbIvWULZhubqJv9VuFaP/view?usp=drive_link" target="_blank" class="cert">
+                        <span class="icon">🎯</span>
+                        <h4>Agile Project Management</h4>
+                        <div class="org">HP Foundation LIFE</div>
+                        <div class="date">May 2025</div>
+                        <div class="hint">👆 Click to view</div>
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1ZhudSClRMD1uK-afZvwxQIgXM9F8ptbY/view?usp=drive_link" target="_blank" class="cert">
+                        <span class="icon">🐍</span>
+                        <h4>Python for Data Science, AI &amp; Development</h4>
+                        <div class="org">IBM (Coursera)</div>
+                        <div class="date">July 2025</div>
+                        <div class="hint">👆 Click to view</div>
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1Cc5lhuXMT0C4Te9oyVW19XS0BN4P8aNs/view?usp=drive_link" target="_blank" class="cert">
+                        <span class="icon">🤖</span>
+                        <h4>AI for Beginners</h4>
+                        <div class="org">HP Foundation LIFE</div>
+                        <div class="date">May 2025</div>
+                        <div class="hint">👆 Click to view</div>
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1pGjiDVBS_CLfXx2UXF_MgujgqoosO946/view?usp=drive_link" target="_blank" class="cert">
+                        <span class="icon">💼</span>
+                        <h4>Advanced Software Engineering</h4>
+                        <div class="org">Walmart Global Tech (Forage)</div>
+                        <div class="date">May 2026</div>
+                        <div class="hint">👆 Click to view</div>
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1k7VPUPN9P0oyPakyRaXQ74nLLYUsRqsY/view?usp=drive_link" target="_blank" class="cert">
+                        <span class="icon">📊</span>
+                        <h4>GenAI Powered Data Analytics</h4>
+                        <div class="org">TATA (Forage)</div>
+                        <div class="date">May 2026</div>
+                        <div class="hint">👆 Click to view</div>
+                    </a>
+
+                </div>
+
+                <div class="btn-wrap">
+                    <a href="https://drive.google.com/drive/folders/12iypddxou0WeuuKq2UjOImw3C2UfiPlA?usp=drive_link" target="_blank" class="btn btn-outline">
+                        📂 View All Certificates
+                    </a>
+                </div>
+            </section>
+
+            <!-- ─── DOWNLOAD ─── -->
+            <div class="btn-wrap">
+                <a href="Vishwa_Mistry_Resume.pdf" class="btn">⬇ Download Resume (PDF)</a>
+            </div>
+
+        </div>
+
+        <!-- ═══ FOOTER ═══ -->
+        <footer class="footer">
+            <p>&copy; 2025 Vishwa Mistry &mdash; All information is true, complete, and accurate.</p>
+            <p>📱 +91 93275 91623 &nbsp;·&nbsp; ✉ mistryvishwa16@gmail.com</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
